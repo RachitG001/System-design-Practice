@@ -7,7 +7,7 @@ object Main {
 
   def main(args: Array[String]): Unit = {
 
-    val cache = new Cache[String, String](5, new LruEvictionPolicy[String])
+    val cache = new Cache[String, String](5)
     cache.put("1", "One")
     cache.put("2", "Two")
     cache.put("3", "Three")

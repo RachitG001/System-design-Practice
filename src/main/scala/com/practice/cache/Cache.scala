@@ -1,12 +1,12 @@
 package com.practice.cache
 
-import com.practice.cache.evictionPolicies.EvictionPolicy
+import com.practice.cache.evictionPolicies.{EvictionPolicy, LruEvictionPolicy}
 import com.practice.cache.storage.Storage
 import com.practice.cache.exceptions.StorageFullException
 
 class Cache[K, V](
-    private var cacheSize: Int,
-    private val evictionPolicy: EvictionPolicy[K]
+    private val cacheSize: Int,
+    private val evictionPolicy: EvictionPolicy[K] = new LruEvictionPolicy[K]
 ) {
   private val storage = new Storage[K, V](cacheSize)
 
@@ -15,7 +15,7 @@ class Cache[K, V](
       this.storage.add(key, value)
       this.evictionPolicy.keyAccessed(key)
     } catch {
-      case ex: StorageFullException =>
+      case _: StorageFullException =>
         try {
           val keyToRemove = this.evictionPolicy.keyToRemove()
           this.storage.remove(keyToRemove)
