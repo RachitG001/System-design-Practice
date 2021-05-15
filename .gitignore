@@ -1,2 +1,9 @@
 *.class
 *.log
+
+.DS_Store
+.idea/
+.project
+target/
+project/project/
+project/target/
