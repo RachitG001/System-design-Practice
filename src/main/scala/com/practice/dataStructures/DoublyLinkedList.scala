@@ -5,29 +5,11 @@ package com.practice.dataStructures
   * @tparam T: Type of value to be stored in linked list
   */
 
-//sealed trait NodeInterface[+T] {
-//  def value: T
-//  def prev: NodeInterface[T]
-//  def next: NodeInterface[T]
-//}
-//
-//object NullNode extends NodeInterface[Nothing] {
-//  override def value: Nothing =
-//    throw new NoSuchElementException("No value available")
-//
-//  override def prev: NodeInterface[Nothing] =
-//    throw new NoSuchElementException("No next available")
-//
-//  override def next: NodeInterface[Nothing] =
-//    throw new NoSuchElementException("No previous available")
-//}
-
 case class DoublyLinkedListNode[T](
     var value: T,
     var prev: DoublyLinkedListNode[T] = null,
     var next: DoublyLinkedListNode[T] = null
 ) {
-
   def getValue: T =
     if (this.value == null)
       throw new NoSuchElementException("No value available")
@@ -41,12 +23,6 @@ case class DoublyLinkedListNode[T](
     if (this.prev == null) throw new NoSuchElementException("No prev available")
     else this.prev
 }
-
-//object NullNode extends DoublyLinkedListNode(
-//  value = throw new NoSuchElementException("No value available"),
-//  prev = throw new NoSuchElementException("No prev available"),
-//  next = throw new NoSuchElementException("No next available")
-//)
 
 class DoublyLinkedList[T] {
 
@@ -73,17 +49,6 @@ class DoublyLinkedList[T] {
       tail = nodeToInsert
       tail.next = null
     }
-//    nodeToInsert match {
-//      case null =>
-//        head = nodeToInsert
-//        tail = nodeToInsert
-//      case node =>
-//        node.next = nodeToInsert
-//        nodeToInsert.prev = tail
-//        tail = nodeToInsert
-//        tail.next = null
-//    }
-
   }
 
   def ejectNode(nodeToDelete: DoublyLinkedListNode[T]): Unit = {
