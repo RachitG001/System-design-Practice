@@ -1,7 +1,6 @@
 package com.practice
 
 import com.practice.cache.Cache
-import com.practice.cache.evictionPolicies.LruEvictionPolicy
 
 object Main {
 
