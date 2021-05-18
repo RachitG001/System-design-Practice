@@ -7,7 +7,7 @@ A repository containing solutions to famous system design problems.
     - Get: This will allow user to get a value against a key in the cache.
     - Eviction: If the cache is full, use some eviction policy to free some space.
    
-   Expectations:
+   ###Expectations:
    
       - Code should be functionally correct
       - Code should be modular and readable.
@@ -15,3 +15,10 @@ A repository containing solutions to famous system design problems.
       - Code should follow oops design
 
     Credits: Udit Agarwal
+
+ ## Designing a password checker: [Link](src/main/scala/com/practice/passwordChecker)
+    - A single function which returns the password strength based on custom policies
+
+   ### Expectations:
+    - Code should be functionally correct and follow oops policies
+    - Provision to add more policies in future
