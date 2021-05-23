@@ -1,4 +1,4 @@
-package com.practice.rideSharingApp.user
+package com.practice.rideBookingApp.user
 
 object UserType extends Enumeration {
   type UserType = Value

@@ -1,6 +1,6 @@
-package com.practice.rideSharingApp.user
+package com.practice.rideBookingApp.user
 
-import com.practice.rideSharingApp.user.UserType.UserType
+import com.practice.rideBookingApp.user.UserType.UserType
 
 trait User {
   val id: Int

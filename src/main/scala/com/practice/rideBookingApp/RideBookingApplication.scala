@@ -1,13 +1,11 @@
-package com.practice.rideSharingApp
+package com.practice.rideBookingApp
 
-import com.practice.rideSharingApp.user.{Driver, Rider, UserService}
+import com.practice.rideBookingApp.user.{Driver, Rider, UserService}
 
-class RideSharingApplication {
+class RideBookingApplication {
 
   private final val userService = new UserService
-  private final val utilityService = new RideSharingApplicationService(
-    userService
-  )
+  private final val utilityService = new RideBookingService(userService)
 
   var activeRiders: Seq[Rider] = Seq.empty
   var activeDrivers: Seq[Driver] = Seq.empty

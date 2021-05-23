@@ -1,8 +1,8 @@
-package com.practice.rideSharingApp
+package com.practice.rideBookingApp
 
-import com.practice.rideSharingApp.user.{Driver, Rider, UserService}
+import com.practice.rideBookingApp.user.{Driver, Rider, UserService}
 
-class RideSharingApplicationService(
+class RideBookingService(
     userService: UserService
 ) {
 

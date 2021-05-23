@@ -1,13 +1,13 @@
-package com.practice.rideSharingApp.user
+package com.practice.rideBookingApp.user
 
 class UserService {
 
   def addRider(riderId: Int, name: String): Rider = {
-    new Rider(id = riderId, name = name)
+    Rider(id = riderId, name = name)
   }
 
   def addDriver(driverId: Int, name: String): Driver = {
-    new Driver(id = driverId, name = name)
+    Driver(id = driverId, name = name)
   }
 
   def bookDriver(driver: Driver): Unit = driver.isAvailable = false
