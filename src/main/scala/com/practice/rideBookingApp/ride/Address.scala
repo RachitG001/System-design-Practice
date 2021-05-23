@@ -1,4 +1,4 @@
-package com.practice.rideBookingApp
+package com.practice.rideBookingApp.ride
 
 import scala.util.Random
 

@@ -2,7 +2,8 @@ package com.practice
 
 import com.practice.cache.Cache
 import com.practice.passwordChecker._
-import com.practice.rideBookingApp.{Address, RideBookingApplication}
+import com.practice.rideBookingApp.ride.Address
+import com.practice.rideBookingApp.rideBookingApplication.RideBookingApplication
 import com.practice.rideBookingApp.user.Rider
 
 object Main {

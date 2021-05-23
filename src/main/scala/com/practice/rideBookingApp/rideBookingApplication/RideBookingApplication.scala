@@ -1,5 +1,6 @@
-package com.practice.rideBookingApp
+package com.practice.rideBookingApp.rideBookingApplication
 
+import com.practice.rideBookingApp.ride.{Address, Ride}
 import com.practice.rideBookingApp.user.{Driver, Rider, UserService}
 
 class RideBookingApplication {
