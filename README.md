@@ -7,7 +7,7 @@ A repository containing solutions to famous system design problems.
     - Get: This will allow user to get a value against a key in the cache.
     - Eviction: If the cache is full, use some eviction policy to free some space.
    
-   ###Expectations:
+   ### Expectations:
    
       - Code should be functionally correct
       - Code should be modular and readable.
