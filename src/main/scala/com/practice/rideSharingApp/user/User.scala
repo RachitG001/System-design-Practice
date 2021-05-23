@@ -3,28 +3,28 @@ package com.practice.rideSharingApp.user
 import com.practice.rideSharingApp.user.UserType.UserType
 
 trait User {
-  def id: Int
-  def name: String
-  def userType: UserType
-  def ridesCompleted: Int
+  val id: Int
+  var name: String
+  val userType: UserType
+
+  var ridesCompleted: Int = 0
+  override def toString: String = this.name
 }
 
-class Driver(
+case class Driver(
     override val id: Int,
     override var name: String
 ) extends User {
-  override def userType: UserType = UserType.Driver
+  override val userType: UserType = UserType.Driver
 
-  override def ridesCompleted: Int = 0
+  var isAvailable: Boolean = true
 }
 
-class Rider(
+case class Rider(
     override val id: Int,
     override var name: String
 ) extends User {
-  override def userType: UserType = UserType.Rider
+  override val userType: UserType = UserType.Rider
 
-  override def ridesCompleted: Int = 0
-
-  def isPreferredRider: Boolean = ridesCompleted >= 10
+  def isPreferredRider: Boolean = this.ridesCompleted >= 10
 }

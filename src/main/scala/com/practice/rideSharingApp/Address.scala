@@ -5,12 +5,14 @@ import scala.util.Random
 case class Address(
     city: String,
     state: String
-)
+) {
+  override def toString: String = s"$city, $state"
+}
 
 object Address {
   /*
       Using a random function to calculate distance
    */
-  def calculateDistance(startingPoint: Address, endingPoint: Address): Int =
+  def calculateDistance(origin: Address, destination: Address): Int =
     Random.between(10, 100)
 }
