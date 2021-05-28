@@ -7,6 +7,8 @@ class Storage[K, V](
 ) {
   private var _store: Map[K, V] = Map.empty
 
+  def isStorageEmpty: Boolean = this._store.isEmpty
+
   def add(key: K, value: V): Unit = {
     if (_store.size == maxSize) {
       throw new StorageFullException

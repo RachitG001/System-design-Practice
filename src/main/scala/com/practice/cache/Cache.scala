@@ -10,6 +10,8 @@ class Cache[K, V](
 ) {
   private val storage = new Storage[K, V](cacheSize)
 
+  def isCacheEmpty: Boolean = this.storage.isStorageEmpty
+
   def put(key: K, value: V): Unit = {
     try {
       this.storage.add(key, value)
