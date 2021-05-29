@@ -1,6 +1,5 @@
 package com.practice.rideBookingApp.rideBookingApplication
 
-import com.practice.rideBookingApp
 import com.practice.rideBookingApp.ride.{Address, Ride}
 import com.practice.rideBookingApp.user.{Driver, Rider, UserService}
 
@@ -18,7 +17,7 @@ class RideBookingService(
       destination: Address,
       noOfSeats: Int
   ): Ride = {
-    val ride = rideBookingApp.ride.Ride(
+    val ride = Ride(
       rideId,
       riderId,
       driver.id,

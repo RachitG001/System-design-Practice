@@ -8,9 +8,9 @@ class RideBookingApplication {
   private final val userService = new UserService
   private final val utilityService = new RideBookingService(userService)
 
-  var activeRiders: Seq[Rider] = Seq.empty
-  var activeDrivers: Seq[Driver] = Seq.empty
-  var rides: Seq[Ride] = Seq.empty
+  private var activeRiders: Seq[Rider] = Seq.empty
+  private var activeDrivers: Seq[Driver] = Seq.empty
+  private var rides: Seq[Ride] = Seq.empty
 
   def getActiveRides: Seq[Ride] = rides.filter(_.isActive)
   def getCompletedRides: Seq[Ride] = rides.filterNot(_.isActive)
