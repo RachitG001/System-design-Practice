@@ -11,7 +11,6 @@ sealed class PasswordChecker(
         strength = strength + 1
       }
     }
-
     if (strength >= 3)
       Strong
     else if (strength == 2)

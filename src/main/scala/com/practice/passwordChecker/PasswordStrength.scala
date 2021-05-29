@@ -3,6 +3,7 @@ package com.practice.passwordChecker
 trait PasswordStrength {
   def displayValue: String
 }
+
 object Weak extends PasswordStrength {
   override def displayValue: String = "Weak"
 }
