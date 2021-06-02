@@ -50,18 +50,30 @@ class SplitwiseSpec extends AnyFlatSpec {
     )
   )
 
-  val expenseService = new ExpenseService(Map("123" -> expenses))
+  val expenseService = new ExpenseService()
+  expenses.foreach(expenseService.addExpense)
 
   val groupService = new GroupService(expenseService, groups)
 
-  val payment: BalanceMap = groupService.getGroupBalances("123", "B")
+  "getGroupBalance" should "return correct balance at the end" in {
+    val payment: BalanceMap = groupService.getGroupBalances("123", "B")
 
-  assert(payment.getUserBalances.get("A").exists(_.amount == 50))
-  assert(payment.getUserBalances.get("B").exists(_.amount == 30))
-  assert(payment.getUserBalances.get("C").exists(_.amount == -80))
+    println(payment)
+    assert(payment.getUserBalances.get("A").exists(_.amount == 50))
+    assert(payment.getUserBalances.get("B").exists(_.amount == 30))
+    assert(payment.getUserBalances.get("C").exists(_.amount == -80))
+  }
 
-  assertThrows[IllegalAccessException](
-    groupService.getGroupBalances("123", "D")
-  )
+  it should "throw exception if an illegal user try to access the user balance" in {
+    assertThrows[IllegalAccessException](
+      groupService.getGroupBalances("123", "D")
+    )
+  }
+
+  it should "return payment graph" in {
+    val paymentGraph =
+      groupService.calculatePaymentGraph(groupId = "123", userId = "B")
+    println(paymentGraph)
+  }
 
 }

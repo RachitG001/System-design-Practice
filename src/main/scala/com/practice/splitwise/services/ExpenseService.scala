@@ -5,7 +5,7 @@ import com.practice.splitwise.models._
 import scala.collection.mutable
 
 class ExpenseService(
-    private final val groupExpenses: Map[String, Seq[Expense]]
+    private final var groupExpenses: Map[String, Seq[Expense]] = Map.empty
 ) {
 
   /**
@@ -13,6 +13,15 @@ class ExpenseService(
     */
   def getGroupExpenses(groupId: String): Seq[Expense] = {
     this.groupExpenses.getOrElse(groupId, Seq.empty)
+  }
+
+  /**
+    * Method to add expenses
+    */
+  def addExpense(expense: Expense): Unit = {
+    val groupId = expense.groupId
+    this.groupExpenses = this.groupExpenses + (groupId -> (this.groupExpenses
+      .getOrElse(groupId, Seq.empty) :+ expense))
   }
 
   /**
@@ -27,7 +36,7 @@ class ExpenseService(
       )
     val positive: mutable.PriorityQueue[(String, Balance)] =
       mutable.PriorityQueue.empty(
-        Ordering.by[(String, Balance), Double](_._2.amount).reverse
+        Ordering.by[(String, Balance), Double](_._2.amount)
       )
     balances.balances.foreach {
       case (userId, balance) =>
@@ -38,13 +47,15 @@ class ExpenseService(
         }
     }
     while (negative.nonEmpty && positive.nonEmpty) {
-      val (payer, amountToPay) = negative.dequeue()
-      val (payee, amountToReceive) = positive.dequeue()
-      val amountToBalance = Math.min(amountToPay.amount, amountToReceive.amount)
+      val (payer, balanceToPay) = negative.dequeue()
+      val (payee, balanceToReceive) = positive.dequeue()
+      val amountToPay = -balanceToPay.amount
+      val amountToReceive = balanceToReceive.amount
+      val amountToBalance = Math.min(amountToPay, amountToReceive)
       paymentGraph = paymentGraph + (payee -> paymentGraph
         .getOrElse(payee, BalanceMap())
         .addBalance(payer, Balance(amount = amountToBalance)))
-      val remaining = amountToReceive.amount - amountToPay.amount
+      val remaining = amountToReceive - amountToPay
       if (remaining > 0) {
         positive.addOne((payee, Balance(amount = remaining)))
       } else {
