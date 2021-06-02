@@ -59,7 +59,7 @@ class ExpenseService(
       if (remaining > 0) {
         positive.addOne((payee, Balance(amount = remaining)))
       } else {
-        negative.addOne((payee, Balance(amount = remaining)))
+        negative.addOne((payer, Balance(amount = remaining)))
       }
     }
     PaymentGraph(paymentGraph)

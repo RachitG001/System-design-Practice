@@ -73,7 +73,10 @@ class SplitwiseSpec extends AnyFlatSpec {
   it should "return payment graph" in {
     val paymentGraph =
       groupService.calculatePaymentGraph(groupId = "123", userId = "B")
-    println(paymentGraph)
+
+    val finalBalanceData = paymentGraph.getFinalBalance
+    assert(finalBalanceData.get(("A", "C")).contains(50))
+    assert(finalBalanceData.get(("B", "C")).contains(30))
   }
 
 }
