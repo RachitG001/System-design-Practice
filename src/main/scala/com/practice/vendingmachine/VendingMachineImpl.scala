@@ -2,16 +2,20 @@ package com.practice.vendingmachine
 import com.practice.vendingmachine.exceptions._
 import com.practice.vendingmachine.model._
 
-class VendingMachineImpl extends VendingMachineInterface {
+class VendingMachineImpl(
+    private val itemInventory: Inventory[Item],
+    private val coinInventory: Inventory[Coin]
+) extends VendingMachineInterface {
 
-  private val itemInventory: Inventory[Item] = new Inventory[Item]
-  private val coinInventory: Inventory[Coin] = new Inventory[Coin]
   private var totalSales: Long = 0
   private var currentItem: Option[Item] = None
   private var currentBalance: Long = 0
 
   def this() {
-    this()
+    this(
+      itemInventory = new Inventory[Item],
+      coinInventory = new Inventory[Coin]
+    )
     Coin.allCoin.foreach { coin =>
       this.coinInventory.put(coin, 5)
     }
