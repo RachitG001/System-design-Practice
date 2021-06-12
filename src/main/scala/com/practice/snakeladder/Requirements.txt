@@ -1,7 +1,9 @@
+### Game requirements
 
 1. Board can be of any size
-2. Initialise 2 players at the starting point of the board
-3. Alternate player turns
+2. Initialise n players at the starting point of the board
+3. Player turns in round robin manner
 4. Move player position based on dice outcome
 5. Increase/decrease if ladder/snake found
 6. Announce winner if a player reached the end
+7. Game should continue until only 1 player left
