@@ -1,0 +1,7 @@
+
+1. Board can be of any size
+2. Initialise 2 players at the starting point of the board
+3. Alternate player turns
+4. Move player position based on dice outcome
+5. Increase/decrease if ladder/snake found
+6. Announce winner if a player reached the end
